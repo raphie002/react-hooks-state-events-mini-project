@@ -1,11 +1,16 @@
+// src/components/Task.js
 import React from "react";
 
-function Task() {
+function Task({ text, category, id, onDeleteTask }) { // Destructure props including id and onDeleteTask
+  const handleDeleteClick = () => {
+    onDeleteTask(id); // Call the parent's delete function with this task's ID
+  };
+
   return (
     <div className="task">
-      <div className="label">CATEGORY HERE</div>
-      <div className="text">TEXT HERE</div>
-      <button className="delete">X</button>
+      <div className="label">{category}</div> {/* Display category */}
+      <div className="text">{text}</div>       {/* Display text */}
+      <button className="delete" onClick={handleDeleteClick}>X</button> {/* Delete button with handler */}
     </div>
   );
 }
